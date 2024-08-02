@@ -1,0 +1,19 @@
+#clicked{
+    color: black;
+    height: 125px;
+    width: 125px;
+}
+
+#background{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#background h1{
+text-align: center;
+}
+

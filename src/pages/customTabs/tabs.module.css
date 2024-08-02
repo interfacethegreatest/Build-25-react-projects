@@ -1,0 +1,42 @@
+#wrapper{
+    padding: 8px;
+}
+
+#heading{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+#tabItem{
+    display: inline-flex;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    background: #4e016a;
+}
+
+#active{
+    border-color: #000;
+    background: #a1d600 ;
+    display: inline-flex;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+}
+
+#label{}
+
+#content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

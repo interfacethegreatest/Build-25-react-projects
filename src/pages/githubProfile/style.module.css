@@ -1,0 +1,29 @@
+#inputWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap : 10px;
+}
+
+#inoutWrapper button:hover{
+    background-color: aqua;
+}
+
+#inputWrapper button{
+    background-color: blue;
+    border-radius: 10px;
+}
+
+#profileDesign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 13px;
+}
+
+#avatar{
+    border: 3px solid black;
+    border-radius: 50%;
+}

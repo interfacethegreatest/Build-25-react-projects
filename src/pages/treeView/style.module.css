@@ -1,0 +1,14 @@
+#sideNav{
+    height: 100%;
+    width: 320px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: aqua;
+    overflow: hidden;
+}
+
+#mainWindow{
+    margin-left: 320px;
+    text-align: center;
+}

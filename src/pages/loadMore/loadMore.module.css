@@ -1,0 +1,14 @@
+
+
+
+#imageGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    grid-template-rows: repeat(5, 250px);
+    gap: 10px; /* Adjust the gap between grid items as needed */
+}
+
+#imageGrid img {
+  height: 250px;
+  width: 250px;
+}
