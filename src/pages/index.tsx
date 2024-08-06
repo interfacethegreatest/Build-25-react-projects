@@ -84,6 +84,10 @@ export default function Home() {
         <Link href="/onClickOutside">
           <u>Custom on click outside hook</u>
         </Link>
+        <br />
+        <Link href="/onWindowResize">
+          <u>Custom on on window resize hook</u>
+        </Link>
 
       </main>
     </>
