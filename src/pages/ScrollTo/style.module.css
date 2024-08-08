@@ -1,0 +1,11 @@
+#productTitle{
+    font-size: 3rem;
+}
+
+#container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

@@ -22,9 +22,6 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <h1>Table of contents</h1>
-        <br />
-        <br />
-
         <Link href="/accordion">
           <u>Accordion page</u>
         </Link>
@@ -88,7 +85,14 @@ export default function Home() {
         <Link href="/onWindowResize">
           <u>Custom on on window resize hook</u>
         </Link>
-
+        <br />
+        <Link href="/ScrollTo">
+          <u>Scroll to top & bottom</u>
+        </Link>
+        <br />
+        <Link href="/ScrollToDiv">
+          <u>Scroll to Div</u>
+        </Link>
       </main>
     </>
   );
