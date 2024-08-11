@@ -93,6 +93,10 @@ export default function Home() {
         <Link href="/ScrollToDiv">
           <u>Scroll to Div</u>
         </Link>
+        <br />
+        <Link href="/weatherApp">
+          <u>Weather App</u>
+        </Link>
       </main>
     </>
   );
