@@ -1,40 +1,5 @@
-:root{
-  --background: #ffffff;
-  --text-primary: #000;
-  --button-bg: #000;
-  --button-text: #ffffff;
-}
-
-[data-theme='light'] {
-  --background: #ffffff;
-  --text-primary: #000;
-  --button-bg: #000;
-  --button-text: #ffffff;
-}
-
-[data-theme='dark'] {
-  --background: #000;
-  --text-primary: #ffffff;
-  --button-bg: #ffffff;
-  --button-text: #000;
-}
-
-#lightDarkMode {
-  background-color: var(--background);
-  color: var(--text-primary);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 20px;
-  transition: all 0.5s;
-}
-
-button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.5s;
+body {
+  margin: 0; /* Override the user-agent margin */
+  padding: 0; /* Reset padding if necessary */
+  /* Add any other styles you want to apply */
 }
