@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import style from './styles.module.css';
-import useMouseDown from './onMouseDown';
+import onMouseDown from './onMouseDown';
 
 export default function Index() {
   const [data, setData] = useState();
@@ -8,7 +8,8 @@ export default function Index() {
   const [error, setError] = useState('');
   const [cityName, setCityName] = useState('');
   const pageBodyRef = useRef(null);
-  useMouseDown(pageBodyRef);
+  const widgetContainer = useRef(null);
+  onMouseDown(pageBodyRef, widgetContainer);
 
   async function loadInitialData(){
     try {
@@ -52,14 +53,14 @@ export default function Index() {
 
   return (
     <div id={style.pageBody} ref={pageBodyRef}>
-      <div id={style.widgetContainer}>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
-       <div id={style.widget}></div>
+      <div id={style.widgetContainer} ref={widgetContainer}>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
+       <div id={style.widget} draggable="false"></div>
       </div>
     </div>
   );
