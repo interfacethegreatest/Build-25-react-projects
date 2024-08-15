@@ -20,7 +20,8 @@
 
 #widget{
     border: 1px solid aliceblue;
-    width: 40vmin;
+    width: 34vmin;
     height: 40vmin;
+    border-radius: 2%;
 }
 

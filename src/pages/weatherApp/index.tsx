@@ -50,17 +50,14 @@ export default function Index() {
      <h1>Error : {error}</h1>
     </>;
   }
-
   return (
     <div id={style.pageBody} ref={pageBodyRef}>
       <div id={style.widgetContainer} ref={widgetContainer}>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
-       <div id={style.widget} draggable="false"></div>
+        {
+          data && data.list.map((timeStamp : any)=>(
+            <div id={style.widget} draggable="false"></div>
+          ))
+        }
       </div>
     </div>
   );
