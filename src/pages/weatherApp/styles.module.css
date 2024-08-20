@@ -12,16 +12,107 @@
     gap: 4vmin;
     position: absolute; 
     left: 50%; 
-    top: 50%; 
+    top: 55%; 
     transform: translate(0%, -50%);
     transition: transform 0.3s ease-out; /* Smooth transition */
+    
 }
 
 
 #widget{
     border: 1px solid aliceblue;
     width: 34vmin;
-    height: 40vmin;
+    min-height: 40vmin;
     border-radius: 2%;
+    box-shadow: 2px 1px 1px aliceblue;
+    pointer-events: all;
 }
 
+#searchSquare{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    margin-left: 100px;
+    margin-top: 25px;
+}
+
+#inputOff {
+    caret-color: aliceblue;
+    width: 30px;
+    height: 30px;
+    border: 1px solid aliceblue;
+    background-color: transparent;
+    border-radius: 7px; /* Shortened form for border-radius */
+    z-index: 1;
+    outline: none;
+    transition: width 450ms ease-in, height 200ms ease-in; /* Combine transitions */
+    color: aliceblue;
+    font-size: 1rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@keyframes bounce {
+    20%, 50%, 80%, to {
+        transform: translateX(0) translateY(0);
+    }
+    40% {
+        transform: translateX(-21px);
+    }
+    70% {
+        transform: translateX(-4px);
+    }
+    90% {
+        transform: translateX(-3px);
+    }
+}
+
+#magnifyingGlass:hover #inputOff {
+    width: 400px;
+    height: 44px;
+    animation: bounce 1s ease;
+    box-shadow: 2px 1px 1px aliceblue;
+}
+
+#magnifyingGlass{
+    display: flex;
+    width: 100%;
+    height: 42px;
+    flex-direction: row;
+}
+
+#handle {
+    display: flex;
+    height: 26%;
+    width: 2px;
+    background-color: rgba(240, 248, 255, 0.801);
+    border-bottom-right-radius: 38px;
+    border-bottom-right-radius: 40%;
+    transform: translateY(270%) rotate(45deg) scaleY(1); /* Initial scaleY */
+    transition: transform 300ms ease-out; /* Smooth transition for transform */
+}
+
+#magnifyingGlass:hover #handle {
+    transform: translateY(190%) rotate(45deg) scaleY(0); /* Scale to 0 on hover */
+}
+
+#searchText{
+    color: aliceblue;
+    margin: 0;
+    margin-top: 10px;
+    padding: 5px;
+    text-decoration: underline;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+#inputOff:-webkit-autofill,
+#inputOff:-webkit-autofill:hover, 
+#inputOff:-webkit-autofill:focus, 
+#inputOff:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight:normal;
+    box-shadow: none;
+}

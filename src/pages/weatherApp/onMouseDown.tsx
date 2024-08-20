@@ -8,6 +8,10 @@ export default function onMouseDown(ref, widgetContainer) {
 
     useEffect(() => {
         const handleMouseDown = (event) => {
+            // Prevent dragging logic if the target is an input or textarea element
+            if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                return;
+            }
             setMouseDownAt(event.pageX);
             event.preventDefault(); // Prevent default mouse behavior
         };
