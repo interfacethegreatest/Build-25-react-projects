@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import style from './styles.module.css';
 import onMouseDown from './onMouseDown';
-import { styleText } from 'util';
+import { FaCircleInfo } from "react-icons/fa6";
 //hide text when not hovering,
 export default function Index() {
   const [data, setData] = useState();
@@ -11,6 +11,7 @@ export default function Index() {
   const [cityName, setCityName] = useState('');
   const pageBodyRef = useRef(null);
   const widgetContainer = useRef(null);
+  
   const handleSearchBar = async (event) => {
     if (event.key === 'Enter') {
       console.log('123')
@@ -84,14 +85,18 @@ export default function Index() {
   return (
     <div id={style.pageBody} ref={pageBodyRef}>
      <div id={style.searchSquare}>
-     {
-       searchError.length > 0 ? 
-       <p id={style.searchText}>{searchError}</p>
-       : 
-      <h6 id={style.searchText}>Search a location, i.e. 'London, GB'.</h6>
-      }
-      <br />
       <div id={style.magnifyingGlass}>
+      {
+       searchError.length > 0 ? 
+       <>
+       <FaCircleInfo/> 
+       <p id={style.searchText}>{searchError}</p>
+       </>
+       :
+       <>
+       <FaCircleInfo/> 
+      <h6 id={style.searchText}>Search a location, i.e. 'London, GB'.</h6>
+      </>}
        <div id={style.handle}></div>
        <input autoComplete='off' onKeyDown={handleSearchBar} name='search_bar' type="text" id={style.inputOff} />
       </div>
