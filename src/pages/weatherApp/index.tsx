@@ -2,7 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import style from './styles.module.css';
 import onMouseDown from './onMouseDown';
 import { FaCircleInfo } from "react-icons/fa6";
-//hide text when not hovering,
+import dynamic from 'next/dynamic';
+import { Canvas } from '@react-three/fiber';
+import { Html } from '@react-three/drei';
+
+const Scene = dynamic(()=> import('./Scene'),{
+  loading: ()=> <p>Loading,</p>,
+  ssr: false
+})
+
 export default function Index() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
@@ -11,10 +19,9 @@ export default function Index() {
   const [cityName, setCityName] = useState('');
   const pageBodyRef = useRef(null);
   const widgetContainer = useRef(null);
-  
+
   const handleSearchBar = async (event) => {
     if (event.key === 'Enter') {
-      console.log('123')
       const value = event.target.value;
       const containsSymbols = /[^a-zA-Z0-9\s,]/.test(value); // Only allows letters, numbers, and spaces
       if (value.length < 3 || value.length > 25) {
@@ -35,13 +42,13 @@ export default function Index() {
           }else{
             throw new Error(weather.message);
           }
-        } catch (error) {
-          //loading state?
+        } catch (error ) {
           setError(error.message)
         }
       }
     }
   };
+
   onMouseDown(pageBodyRef, widgetContainer);
 
   async function loadInitialData(){
@@ -82,32 +89,42 @@ export default function Index() {
      <h1>Error : {error}</h1>
     </>;
   }
+  
   return (
     <div id={style.pageBody} ref={pageBodyRef}>
-     <div id={style.searchSquare}>
-      <div id={style.magnifyingGlass}>
-      {
-       searchError.length > 0 ? 
-       <>
-       <FaCircleInfo/> 
-       <p id={style.searchText}>{searchError}</p>
-       </>
-       :
-       <>
-       <FaCircleInfo/> 
-      <h6 id={style.searchText}>Search a location, i.e. 'London, GB'.</h6>
-      </>}
-       <div id={style.handle}></div>
-       <input autoComplete='off' onKeyDown={handleSearchBar} name='search_bar' type="text" id={style.inputOff} />
+      <div id={style.searchSquare}>
+        <div id={style.magnifyingGlass}>
+          {searchError.length > 0 ? (
+            <>
+              <li id={style.infoIcon}><FaCircleInfo title={searchError} style={{color:"red", cursor:"pointer"}}/></li>
+            </>
+          ) : (
+            <>
+              <div id={style.infoIcon}><FaCircleInfo title="Search a location, i.e. 'London, GB'." style={{color:"aliceblue"}}/></div> 
+            </>
+          )}
+          <div id={style.handle}></div>
+          <input
+            autoComplete='off'
+            placeholder='Search'
+            onKeyDown={handleSearchBar}
+            name='search_bar'
+            type="text"
+            id={style.inputOff}
+          />
+        </div>
       </div>
-     </div>
-      <div id={style.widgetContainer} ref={widgetContainer}>
-        {
-          data && data.list.map((timeStamp : any)=>(
-            <div id={style.widget} draggable="false"></div>
-          ))
-        }
-      </div>
+      <Canvas>
+        <Html>
+          <div id={style.widgetContainer} ref={widgetContainer}>
+            {data && data.list.map((timeStamp) => (
+              <div key={timeStamp.dt} id={style.widget} draggable="false">
+                {/* Your content here */}
+              </div>
+            ))}
+          </div>
+        </Html>
+      </Canvas>
     </div>
   );
 }
