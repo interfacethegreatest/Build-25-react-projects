@@ -1,15 +1,18 @@
+import { useGLTF } from '@react-three/drei';
 import React from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Canvas } from '@react-three/fiber';
-import { useRef } from 'react';
-import { MeshBasicMaterial, PlaneGeometry } from 'three';
 
 export default function Model() {
+  const { nodes } = useGLTF("/medias/torrus.glb");
 
   return (
-    <mesh>
-      <planeGeometry args={[1, 1]} /> {/* Width and height */}
-      <meshBasicMaterial color="lightblue" side={2} /> {/* Light blue color */}
-    </mesh>
+    <group>
+      <mesh
+        geometry={nodes.Torus002.geometry}
+        material={nodes.Torus002.material}
+        position={nodes.Torus002.position}
+        rotation={nodes.Torus002.rotation}
+        scale={nodes.Torus002.scale}
+      />
+    </group>
   );
 }
