@@ -4,7 +4,7 @@ import onMouseDown from './onMouseDown';
 import { FaCircleInfo } from "react-icons/fa6";
 import dynamic from 'next/dynamic';
 import { Canvas } from '@react-three/fiber';
-import { Html } from '@react-three/drei';
+import { useInView } from 'react-intersection-observer';
 import Model from './Model';
 
 const Scene = dynamic(() => import('./Scene'), {
@@ -112,15 +112,28 @@ export default function Index() {
       </div>
       <div id={style.widgetContainer} ref={widgetContainer}>
         {data && data.list.map((timeStamp) => (
-          <div key={timeStamp.dt} id={style.widget} draggable="false">
-            <Canvas style={{ height: '100%', width: '100%' }}>
-              <ambientLight />
-              <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} />
-              <Model />
-            </Canvas>
-          </div>
+          <LazyWidget key={timeStamp.dt} />
         ))}
       </div>
+    </div>
+  );
+}
+
+function LazyWidget({ timeStamp }) {
+  const { ref, inView } = useInView({
+    triggerOnce: false, // Render only once when it comes into view
+    rootMargin: '200px', // Load earlier before it comes into view
+  });
+
+  return (
+    <div ref={ref} id={style.widget} draggable="false">
+      {inView && (
+        <Canvas style={{ height: '100%', width: '100%' }}>
+          <ambientLight />
+          <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} />
+          <Model />
+        </Canvas>
+      )}
     </div>
   );
 }
