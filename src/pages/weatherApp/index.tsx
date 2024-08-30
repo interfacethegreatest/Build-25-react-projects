@@ -5,7 +5,6 @@ import { FaCircleInfo } from "react-icons/fa6";
 import dynamic from 'next/dynamic';
 import { Canvas } from '@react-three/fiber';
 import { useInView } from 'react-intersection-observer';
-import Model from './Model';
 
 const Scene = dynamic(() => import('./Scene'), {
   loading: () => <p>Loading...</p>,
@@ -128,11 +127,7 @@ function LazyWidget({ timeStamp }) {
   return (
     <div ref={ref} id={style.widget} draggable="false">
       {inView && (
-        <Canvas style={{ height: '100%', width: '100%' }}>
-          <ambientLight />
-          <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} />
-          <Model />
-        </Canvas>
+        <Scene/>
       )}
     </div>
   );

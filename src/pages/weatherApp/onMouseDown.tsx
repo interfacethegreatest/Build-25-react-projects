@@ -24,7 +24,7 @@ export default function onMouseDown(ref, widgetContainer) {
             const maxDelta = window.innerWidth / 2;
 
             // Reduce the translation distance by a factor of three
-            const percentageTransform = (deltaX / maxDelta) * (100 / 5);
+            const percentageTransform = (deltaX / maxDelta) * (100 / 15);
 
             // Calculate the total scrollable width
             const containerWidth = widgetContainer.current.offsetWidth;
