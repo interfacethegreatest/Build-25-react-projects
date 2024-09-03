@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { Canvas } from '@react-three/fiber';
 import { useInView } from 'react-intersection-observer';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
 
 const Scene = dynamic(() => import('./Scene'), {
   loading: () => <p>Loading...</p>,
@@ -129,12 +130,12 @@ function LazyWidget({ timeStamp }) {
   const rotateX = useTransform(
     mouseYSpring,
     [-0.5, 0.5], 
-    ["+4.5deg", "-4.5deg"]
+    ["+2.5deg", "-2.5deg"]
   );
   const rotateY = useTransform(
     mouseXSpring,
     [-0.5, 0.5], 
-    ["+4.5deg", "-4.5deg"]
+    ["+2.5deg", "-2.5deg"]
   );
 
   const handleMouseLeave = () => {
@@ -161,20 +162,33 @@ function LazyWidget({ timeStamp }) {
   const width = 256;
 
   return (
+    <Tilt scale={1.015} tiltMaxAngleX={4} tiltMaxAngleY={4}>
     <motion.div style={{rotateX, rotateY}} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} ref={ref} id={style.widget} draggable="false">
       {inView && (
         <>
-        <div 
-          id={style.widgetDesign} 
-          style={{ height: `${height*0.9}px`, width: `${width*0.9}px` }}
-        ></div>
-        <div 
-          id={style.widgetDesign} 
-          style={{ height: `${height*0.8}px`, width: `${width*0.8}px` }}
-        ></div>
+        <motion.div 
+          id={style.widgetDesign}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ rotateX, rotateY, height: `${height*0.975}px`, width: `${width*0.975}px` }}
+        ><motion.div 
+        id={style.widgetDesign}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, height: `${height*0.95}px`, width: `${width*0.95}px` }}
+        ><motion.div 
+        id={style.widgetDesign}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, height: `${height*0.925}px`, width: `${width*0.925}px` }}
+        ><div 
+        id={style.widgetDesign} 
+        style={{ height: `${height*0.9}px`, width: `${width*0.9}px` }}
+        ></div></motion.div></motion.div></motion.div>
         </>
       )}
     </motion.div>
+    </Tilt>
   );
 }
 

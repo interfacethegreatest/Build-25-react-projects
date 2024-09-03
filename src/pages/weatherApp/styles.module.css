@@ -146,8 +146,9 @@
 #widgetDesign{
     border-radius: 25px;
     border: 1px solid rgba(128, 128, 128, 0.018);
-    position: absolute;
-    background-color: rgba(59, 59, 59, 0.062);
     transform-style: preserve-3d;
     transform: translateZ(75px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
