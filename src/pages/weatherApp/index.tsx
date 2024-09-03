@@ -5,6 +5,7 @@ import { FaCircleInfo } from "react-icons/fa6";
 import dynamic from 'next/dynamic';
 import { Canvas } from '@react-three/fiber';
 import { useInView } from 'react-intersection-observer';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const Scene = dynamic(() => import('./Scene'), {
   loading: () => <p>Loading...</p>,
@@ -119,16 +120,61 @@ export default function Index() {
 }
 
 function LazyWidget({ timeStamp }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(
+    mouseYSpring,
+    [-0.5, 0.5], 
+    ["+4.5deg", "-4.5deg"]
+  );
+  const rotateY = useTransform(
+    mouseXSpring,
+    [-0.5, 0.5], 
+    ["+4.5deg", "-4.5deg"]
+  );
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  }
+
+  const handleMouseMove = (e) =>{
+    const rect = e.target.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const Xpct = mouseX / width - 0.5;
+    const Ypct = mouseY / height - 0.5;
+    x.set(Xpct);
+    y.set(Ypct);
+  }
   const { ref, inView } = useInView({
-    triggerOnce: false, // Render only once when it comes into view
-    rootMargin: '200px', // Load earlier before it comes into view
+    triggerOnce: false,
+    rootMargin: '200px',
   });
+  const height = 366;
+  const width = 256;
 
   return (
-    <div ref={ref} id={style.widget} draggable="false">
+    <motion.div style={{rotateX, rotateY}} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} ref={ref} id={style.widget} draggable="false">
       {inView && (
-        <Scene/>
+        <>
+        <div 
+          id={style.widgetDesign} 
+          style={{ height: `${height*0.9}px`, width: `${width*0.9}px` }}
+        ></div>
+        <div 
+          id={style.widgetDesign} 
+          style={{ height: `${height*0.8}px`, width: `${width*0.8}px` }}
+        ></div>
+        </>
       )}
-    </div>
+    </motion.div>
   );
 }
+

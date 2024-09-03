@@ -2,11 +2,10 @@ import { useGLTF, Text, MeshTransmissionMaterial } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
 
-export default function Model() {
+function Model() {
   const mesh = useRef();
   const { nodes } = useGLTF("/medias/Cube.glb");
   const { viewport } = useThree();
-  console.log(nodes)
 
   useFrame(() => {
     mesh.current.rotation.x += 0.002;
@@ -14,6 +13,7 @@ export default function Model() {
 
   return (
     <group scale={viewport.width * 0.28}>
+      <Text position={[0,0,-2]}>Hello World</Text>
       <mesh ref={mesh}
         geometry={nodes.Cube002.geometry}
         material={nodes.Cube002.material}
@@ -26,3 +26,5 @@ export default function Model() {
     </group>
   );
 }
+
+export default React.memo(Model);
