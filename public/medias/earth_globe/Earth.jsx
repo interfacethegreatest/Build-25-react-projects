@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 export default function Earth(props) {
   const { nodes, materials } = useGLTF('/medias/earth_globe/earth.gltf');
+  const mesh = useRef();
+  useFrame(() =>{
+    
+  })
+  
   return (
-    <group {...props} scale={[.6,.6,.6]} position={[.89,-1.1,.7]} >
+    <group ref={mesh} {...props} scale={[.6,.6,.6]} position={[.89,-1.1,.7]} >
       <group  >
         <group rotation={[-Math.PI, 0, 0]}>
           <mesh geometry={nodes.meshNode_Material_u1_v1_0.geometry} material={materials.Material_u1_v1} />
