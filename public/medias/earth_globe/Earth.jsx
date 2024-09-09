@@ -6,7 +6,7 @@ export default function Earth(props) {
   const { nodes, materials } = useGLTF('/medias/earth_globe/earth.gltf');
   const mesh = useRef();
   useFrame(() =>{
-    
+    mesh.current.rotation.z +=0.002
   })
   
   return (

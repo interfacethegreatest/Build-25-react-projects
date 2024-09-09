@@ -1,17 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import style from './styles.module.css';
 import onMouseDown from './onMouseDown';
 import { FaCircleInfo } from "react-icons/fa6";
-import dynamic from 'next/dynamic';
-import { Canvas } from '@react-three/fiber';
 import { useInView } from 'react-intersection-observer';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-
-const Scene = dynamic(() => import('./Scene'), {
-  loading: () => <p>Loading...</p>,
-  ssr: false,
-});
+import Scene from './Scene';
+import GlobeScene from './globeScene';
 
 export default function Index() {
   const [data, setData] = useState();
@@ -89,6 +84,7 @@ export default function Index() {
 
   return (
     <div id={style.pageBody} ref={pageBodyRef}>
+     <Scene/>
       <div id={style.searchSquare}>
         <div id={style.magnifyingGlass}>
           {searchError.length > 0 ? (
@@ -110,6 +106,9 @@ export default function Index() {
             id={style.inputOff}
           />
         </div>
+      </div>
+      <div id={style.globeSquare}>
+        <GlobeScene/>
       </div>
       <div id={style.widgetContainer} ref={widgetContainer}>
         {data && data.list.map((timeStamp) => (
@@ -184,7 +183,7 @@ function LazyWidget({ timeStamp }) {
         ><div 
         id={style.widgetDesign} 
         style={{ height: `${height*0.9}px`, width: `${width*0.9}px` }}
-        ></div></motion.div></motion.div></motion.div>
+        ><h1>Hello Wrld</h1></div></motion.div></motion.div></motion.div>
         </>
       )}
     </motion.div>
