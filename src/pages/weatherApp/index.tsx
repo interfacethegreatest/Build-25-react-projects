@@ -14,6 +14,7 @@ export default function Index() {
   const [error, setError] = useState('');
   const [searchError, setSearchError] = useState('');
   const [cityName, setCityName] = useState('');
+  const [position, setPosition] = useState([Number, Number]);
   const pageBodyRef = useRef(null);
   const widgetContainer = useRef(null);
 
@@ -31,6 +32,7 @@ export default function Index() {
           setCityName(value);
           const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=1&appid=1a4415755168a7a47cc946e7c107fadf`);
           const geo = await geoResponse.json();
+          setPosition([geo[0].lat, geo[0].lon])
           const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${geo[0].lat}&lon=${geo[0].lon}&units=metric&appid=1a4415755168a7a47cc946e7c107fadf`);
           const weather = await response.json();
           if (weather) {
@@ -55,6 +57,7 @@ export default function Index() {
       setCityName(city);
       const geoResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=1a4415755168a7a47cc946e7c107fadf`);
       const geo = await geoResponse.json();
+      setPosition([geo[0].lat, geo[0].lon])
       const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${geo[0].lat}&lon=${geo[0].lon}&units=metric&appid=1a4415755168a7a47cc946e7c107fadf`);
       const weather = await response.json();
       if (weather) {
@@ -99,7 +102,7 @@ export default function Index() {
           <div id={style.handle}></div>
           <input
             autoComplete='off'
-            placeholder='Search'
+            placeholder='Search a city or location. i.e, London, GB'
             onKeyDown={handleSearchBar}
             name='search_bar'
             type="text"
@@ -108,7 +111,7 @@ export default function Index() {
         </div>
       </div>
       <div id={style.globeSquare}>
-        <GlobeScene/>
+        <GlobeScene lat={position[0]} long={position[1]}/>
       </div>
       <div id={style.widgetContainer} ref={widgetContainer}>
         {data && data.list.map((timeStamp) => (
