@@ -20,9 +20,6 @@ export default function GlobeScene({lat, long}:{lat:number, long:number}) {
   return (
     <Canvas id={style.globeCanvas}>
      <ambientLight intensity={1} />
-     <OrbitControls
-      enableZoom={false}
-     />
      <Suspense fallback={null}>
       <Earth rotation={rotation} />
      </Suspense>

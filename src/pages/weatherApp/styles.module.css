@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     z-index: 13;
-    margin-left: 170px;
+    margin-left: 10px;
     margin-top: 25px;
 }
 
@@ -80,7 +80,7 @@
 }
 
 #magnifyingGlass:hover #inputOff {
-    width: 400px;
+    width: 365px;
     height: 40px;
     animation: bounce 1s ease;
     box-shadow: 2px 1px 1px aliceblue;
@@ -89,8 +89,8 @@
 #magnifyingGlass{
     display: flex;
     height: 42px;
-    width: 500px;
-    padding: 10px;
+    width: 90%;
+    padding: 0px;
     flex-direction: row;
 }
 
@@ -175,4 +175,26 @@
     width: 100% !important;
     margin-left: auto;
     pointer-events: auto;
+}
+
+#dateTime{
+    position: absolute;
+    color: aliceblue;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 75px;
+    left: 0;
+    right: 0;
+    color: lime;
+}
+
+#location{
+    position: absolute;
+    color: aliceblue;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 125px;
+    left: 0;
+    right: 0;
+    color: lime;
 }

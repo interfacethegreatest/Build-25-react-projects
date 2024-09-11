@@ -1,5 +1,9 @@
+// implement dynamic time and location,
+// addittional text?
+// implement location on map,
+// implement cards,
 import React, { useEffect, useState, useRef, Suspense } from 'react';
-import style from './styles.module.css';
+import style from './styles.module.css'
 import onMouseDown from './onMouseDown';
 import { FaCircleInfo } from "react-icons/fa6";
 import { useInView } from 'react-intersection-observer';
@@ -7,6 +11,12 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import Scene from './Scene';
 import GlobeScene from './globeScene';
+import { Orbitron } from "next/font/google";
+
+const font = Orbitron({
+  subsets: ["latin"],
+  weight: ["500", "700", "400"]
+})
 
 export default function Index() {
   const [data, setData] = useState();
@@ -60,6 +70,7 @@ export default function Index() {
       setPosition([geo[0].lat, geo[0].lon])
       const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${geo[0].lat}&lon=${geo[0].lon}&units=metric&appid=1a4415755168a7a47cc946e7c107fadf`);
       const weather = await response.json();
+      console.log(weather)
       if (weather) {
         setLoading(false);
         setData(weather);
@@ -110,6 +121,8 @@ export default function Index() {
           />
         </div>
       </div>
+      <h2 id={style.dateTime} className={font.className}>{data && data.list[0].dt_txt}</h2>
+      <h2 id={style.location} className={font.className}>{data && data.city.name}</h2>
       <div id={style.globeSquare}>
         <GlobeScene lat={position[0]} long={position[1]}/>
       </div>

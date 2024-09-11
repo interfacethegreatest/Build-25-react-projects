@@ -16,6 +16,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "public/medias/earth_globe/Earth.jsx", "public/medias/earth_globe/Earth.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "public/medias/earth-globe/Earth.jsx", "public/medias/earth-globe/Earth.jsx"],
   "exclude": ["node_modules"]
 }
