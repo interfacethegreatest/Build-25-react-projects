@@ -22,12 +22,12 @@
 
 #widget{
     /*border: 1px solid rgba(240, 248, 255, 0.171);*/
-    width: 228px;
-    min-width: 228px;
-    min-height: 333px;
-    border-radius: 25px;
+    width: 234px;
+    min-height: 363px;
+    border-radius: 10px;
+    border: 2px solid rgba(43, 44, 44, 0.781);
     box-shadow: 2px 1px 1px rgba(240, 248, 255, 0.062);
-    background: linear-gradient(135deg, rgba(7, 7, 7, 0.091), rgba(255, 255, 255, 0.084));
+    background: linear-gradient(135deg, rgba(12, 12, 12, 0.945), rgba(255, 255, 255, 0));
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(20px);
     cursor: pointer;
@@ -145,8 +145,8 @@
 }
 
 #widgetDesign{
-    border-radius: 25px;
-    border: 1px solid rgba(240, 248, 255, 0.014);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.01);
     transform-style: preserve-3d;
     transform: translateZ(75px);
     display: flex;
@@ -197,4 +197,36 @@
     left: 0;
     right: 0;
     color: lime;
+}
+
+#card{
+    width: 234px;
+    height: 364px;
+    background-color: hsla(0, 0%, 98%, 0.24);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+}
+
+#circle{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -200px;
+    width: 438px;
+    height: 438px;
+    background: hsla(0, 0%, 7%, 0.979);
+    clip-path: circle();
+}
+
+#circle::before{
+    position: absolute;
+    width: 100%;
+    content: '';
+    height: 100%;
+    border-radius: 50%;
+    top: -8px;
+    left: -16px;
+    box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.63);
 }

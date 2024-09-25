@@ -11,9 +11,9 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import Scene from './Scene';
 import GlobeScene from './globeScene';
-import { Orbitron } from "next/font/google";
+import { Heebo, Orbitron } from "next/font/google";
 
-const font = Orbitron({
+const font = Heebo({
   subsets: ["latin"],
   weight: ["500", "700", "400"]
 })
@@ -181,25 +181,21 @@ function LazyWidget({ timeStamp }) {
     <motion.div style={{rotateX, rotateY}} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} ref={ref} id={style.widget} draggable="false">
       {inView && (
         <>
-        <motion.div 
+        {/*<motion.div 
           id={style.widgetDesign}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{ rotateX, rotateY, height: `${height*0.975}px`, width: `${width*0.975}px` }}
-        ><motion.div 
-        id={style.widgetDesign}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, height: `${height*0.95}px`, width: `${width*0.95}px` }}
-        ><motion.div 
-        id={style.widgetDesign}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, height: `${height*0.925}px`, width: `${width*0.925}px` }}
         ><div 
         id={style.widgetDesign} 
-        style={{ height: `${height*0.9}px`, width: `${width*0.9}px` }}
-        ><h1>Hello Wrld</h1></div></motion.div></motion.div></motion.div>
+        style={{ height: `${height*0.96}px`, width: `${width*0.9}px` }}
+        ><h1>Hello Wrld</h1></div></motion.div>
+        */}
+         <div id={style.card}>
+          <div id={style.circle}>
+
+          </div>
+         </div>
         </>
       )}
     </motion.div>
