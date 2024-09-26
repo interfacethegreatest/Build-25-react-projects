@@ -192,9 +192,18 @@ function LazyWidget({ timeStamp }) {
         ><h1>Hello Wrld</h1></div></motion.div>
         */}
          <div id={style.card}>
-          <div id={style.circle}>
-
-          </div>
+          <section id={style.titleRow}>
+            <p id={style.rarity}>Basic Weather</p>
+            <h1 id={style.name}>Sunny</h1>
+            <p id={style.health}>50 HP</p>
+          </section>
+          <section id={style.characterIimage}></section>
+          <section id={style.characterMeta}></section>
+          <section id={style.characterAbility}></section>
+          <section id={style.characterAbility}></section>
+          <section id={style.characterStats}></section>
+          <section id={style.characterDescription}></section>
+          <section id={style.cardDetails}></section>
          </div>
         </>
       )}

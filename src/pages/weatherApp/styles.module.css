@@ -22,19 +22,28 @@
 
 #widget{
     /*border: 1px solid rgba(240, 248, 255, 0.171);*/
-    width: 234px;
-    min-height: 363px;
+    width: 245px;
+    min-height: 380px;
     border-radius: 10px;
-    border: 2px solid rgba(43, 44, 44, 0.781);
+    /*border: 2px solid rgb(20, 20, 20);
     box-shadow: 2px 1px 1px rgba(240, 248, 255, 0.062);
-    background: linear-gradient(135deg, rgba(12, 12, 12, 0.945), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(20px);
+    /*background: linear-gradient(135deg, rgba(165, 165, 165, 0.3856), rgba(122, 121, 121, 0.993));*/
+    /*backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(20px);*/
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
+    /*background: linear-gradient(135deg, rgba(255, 255, 255, 0.71) 5%, rgba(197, 197, 196, 0.2) 22%), linear-gradient(-30deg, rgba(255, 255, 255, 0.71) 5%, rgba(255, 255, 0, 0) 1%);*/
+}
+
+#widget::before{
+    width: 245px;
+    min-height: 380px;
+    background-color: aqua;
+    position: relative;
+    z-index: 5;
 }
 
 #searchSquare{
@@ -200,23 +209,65 @@
 }
 
 #card{
-    width: 234px;
-    height: 364px;
-    background-color: hsla(0, 0%, 98%, 0.24);
-    border-radius: 10px;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(20px);
+    width: 2.5in;
+    height: 3.5in;
+    background: blue;
+    display: grid;
+    grid-template-rows: 25px 100px 25px 50px 50px 30px 20px 10px;
+    border-radius: 15px;
     overflow: hidden;
+    #titleRow{
+      display: grid;
+      grid-template-areas:
+       "rarity rarity rarity"
+       "name health type";
+      background: green;
+      height: 45px;
+      #rarity{
+        grid-area: rarity;
+      }
+      #name{
+        grid-area: name;
+      }
+      #health{
+        grid-area: health;
+      }
+      #type {
+        grid-area: type;
+      }
+    }
+    #characterImg{
+        background-color: pink;
+        height: 250px;
+    }
+    #characterMeta{
+        background-color: orange;
+        height: 25px;
+    }
+    #characterAbility{
+        color: red;
+        height: 75px;
+    }
+    #characterStats{
+        background-color: brown;
+    }
+    #characterDescription{
+        background-color: yellow;
+    }
+    #cardDetails{
+        background-color: yellowgreen;
+    }
+
 }
 
-#circle{
+/*#circle{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: -200px;
     width: 438px;
     height: 438px;
-    background: hsla(0, 0%, 7%, 0.979);
+    background: rgb(6, 150, 71);
     clip-path: circle();
 }
 
@@ -229,4 +280,5 @@
     top: -8px;
     left: -16px;
     box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.63);
-}
+    border: 1px solid aliceblue;
+}*/
