@@ -212,52 +212,35 @@
     width: 2.5in;
     height: 3.5in;
     background: blue;
-    display: grid;
-    grid-template-rows: 25px 100px 25px 50px 50px 30px 20px 10px;
-    border-radius: 15px;
-    overflow: hidden;
-    #titleRow{
-      display: grid;
-      grid-template-areas:
-       "rarity rarity rarity"
-       "name health type";
-      background: green;
-      height: 45px;
-      #rarity{
-        grid-area: rarity;
-      }
-      #name{
-        grid-area: name;
-      }
-      #health{
-        grid-area: health;
-      }
-      #type {
-        grid-area: type;
-      }
+    grid-template-columns: 25px 100px 25px 50px 50px 30px 20px 10px;
+    .titleRow{
+        background: green;
+        height: 23px;
     }
-    #characterImg{
+    .weatherImg{
         background-color: pink;
-        height: 250px;
+        height: 125px;
     }
-    #characterMeta{
+    .weatherMeta{
         background-color: orange;
-        height: 25px;
+        height: 13px;
     }
-    #characterAbility{
-        color: red;
-        height: 75px;
+    .weatherAbility{
+        background-color: red;
+        height: 38px;
     }
-    #characterStats{
+    .weatherStats{
         background-color: brown;
+        height: 23px;
     }
-    #characterDescription{
+    .weatherDescription{
         background-color: yellow;
+        height: 23px;
     }
-    #cardDetails{
+    .cardDetails{
         background-color: yellowgreen;
+        height: 23px;
     }
-
 }
 
 /*#circle{

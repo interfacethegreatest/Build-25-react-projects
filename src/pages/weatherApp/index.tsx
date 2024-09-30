@@ -11,11 +11,17 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import Scene from './Scene';
 import GlobeScene from './globeScene';
-import { Heebo, Orbitron } from "next/font/google";
+import { Heebo, Yellowtail } from "next/font/google";
+import data from '../accordion/data';
 
 const font = Heebo({
   subsets: ["latin"],
   weight: ["500", "700", "400"]
+})
+
+const font2 = Yellowtail({
+  subsets: ["latin"],
+  weight: ["400"],
 })
 
 export default function Index() {
@@ -127,15 +133,16 @@ export default function Index() {
         <GlobeScene lat={position[0]} long={position[1]}/>
       </div>
       <div id={style.widgetContainer} ref={widgetContainer}>
-        {data && data.list.map((timeStamp) => (
-          <LazyWidget key={timeStamp.dt} />
-        ))}
+       {data && data.list.map((_, index) => (
+        <LazyWidget key={index} data={data.list[index]} />
+       ))}
       </div>
     </div>
   );
 }
 
-function LazyWidget({ timeStamp }) {
+function LazyWidget({ data }) {
+  console.log(data.weather[0].description)
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -192,18 +199,14 @@ function LazyWidget({ timeStamp }) {
         ><h1>Hello Wrld</h1></div></motion.div>
         */}
          <div id={style.card}>
-          <section id={style.titleRow}>
-            <p id={style.rarity}>Basic Weather</p>
-            <h1 id={style.name}>Sunny</h1>
-            <p id={style.health}>50 HP</p>
-          </section>
-          <section id={style.characterIimage}></section>
-          <section id={style.characterMeta}></section>
-          <section id={style.characterAbility}></section>
-          <section id={style.characterAbility}></section>
-          <section id={style.characterStats}></section>
-          <section id={style.characterDescription}></section>
-          <section id={style.cardDetails}></section>
+          <section className={style.titleRow}></section>
+          <section className={style.weatherImg}></section>
+          <section className={style.weatherMeta}></section>
+          <section className={style.weatherAbility}></section>
+          <section className={style.weatherAbility}></section>
+          <section className={style.weatherStats}></section>
+          <section className={style.weatherDescription}></section>
+          <section className={style.cardDetails}></section>
          </div>
         </>
       )}
