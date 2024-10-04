@@ -199,14 +199,64 @@ function LazyWidget({ data }) {
         ><h1>Hello Wrld</h1></div></motion.div>
         */}
          <div id={style.card}>
-          <section className={style.titleRow}></section>
-          <section className={style.weatherImg}></section>
-          <section className={style.weatherMeta}></section>
-          <section className={style.weatherAbility}></section>
-          <section className={style.weatherAbility}></section>
-          <section className={style.weatherStats}></section>
-          <section className={style.weatherDescription}></section>
-          <section className={style.cardDetails}></section>
+          <section className={style.titleRow}>
+            <p className={style.rarity}><b>Basic Pokemon</b></p>
+            <h1 className={style.name}><b>Charmander</b></h1>
+            <p className={style.health}>50 HP</p>
+            <img className={style.elementIcon} src="medias\fire.png" />
+          </section>
+          <section className={style.weatherImg}>
+            <img src="medias\charmander.jpg" alt="" />
+          </section>
+          <section className={style.weatherMeta}>
+           <p><b>Lizard Pokemon. Length: 2' 0", Weight: 19 lbs.</b></p>
+          </section>
+          <section className={style.weatherAbility}>
+           <span className={style.abilityCost}>
+				    <img className={style.elementIcon} src="medias\fire.png"/>
+           </span>
+			     <span className={style.abilityDescription}>
+				    <span className={style.abilityName}>Scratch</span>
+			     </span>
+			     <p className={style.abilityDamage}>10</p>
+          </section>
+          <section className={style.weatherAbility}>
+           <span className={style.abilityCost} style={{transform:"translateY(-10px)"}}>
+				    <img className={style.elementIcon} src="medias\fire.png"/>
+				    <img className={style.elementIcon} src="medias\fire.png"/>
+				    <img className={style.elementIcon} src="medias\fire.png"/>
+				    <img className={style.elementIcon} src="medias\fire.png"/>
+			     </span>
+			     <span className={style.abilityDescription}>
+				    <p style={{fontSize:"11px", transform:"translate(8px,-12px)"}}><span className={style.abilityName}>Ember</span>Discard 1 <img className={style.elementIcon} src="medias\fire.png" /> Energy card attached to Charmander in order to use
+					    this
+					    attack.</p>
+			      </span>
+			      <p className={style.abilityDamage}>30</p>
+          </section>
+          <section className={style.weatherStats}>
+            <span className={style.characterStat}>
+              <p style={{transform:"translateY(-22px)"}}>weakness</p>
+              <img style={{transform:"translateY(-12px)"}} src="medias\fire.png" className={style.elementIcon} />
+            </span>
+            <span className={style.characterStat}>
+              <p style={{transform:"translateY(-22px)"}}>resistance</p>
+            </span>
+            <span className={style.characterStat}>
+              <p style={{transform:"translateY(-22px)"}}>retreat cost</p>
+              <img style={{transform:"translateY(-12px)"}} src="medias\fire.png" className={style.elementIcon} />
+            </span>
+          </section>
+          <section className={style.weatherDescription}>
+          <p>Obviously prefers hot places. If it gets caught in the rain, steam is said to sput from the tip of its tail.
+				   LV.10 #4
+          </p>
+          </section>
+          <section className={style.cardDetails}>
+            <p className={style.artist}>Lilus. Mitsuhire Arita</p>
+            <p className={style.company}>&copy;1995, 96, 96 Nintendo, Creatures, GAMEFREAK. &copy;1999 Wizards.</p>
+            <p className={style.collectorCardNumber}>46/120</p>
+          </section>
          </div>
         </>
       )}
