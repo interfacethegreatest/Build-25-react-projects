@@ -142,7 +142,7 @@ export default function Index() {
 }
 
 function LazyWidget({ data }) {
-  console.log(data.weather[0].description)
+  console.log(data)
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -200,25 +200,25 @@ function LazyWidget({ data }) {
         */}
          <div id={style.card}>
           <section className={style.titleRow}>
-            <p className={style.rarity}><b>Basic Pokemon</b></p>
-            <h1 className={style.name}><b>Charmander</b></h1>
-            <p className={style.health}>50 HP</p>
+            <p className={style.rarity}><b>{data.weather[0].description[0].toUpperCase()+ data.weather[0].description.slice(1)}</b></p>
+            <h1 className={style.name}><b>{data.weather[0].main}</b></h1>
+            <p className={style.health}>{data.main.temp+" °C "}</p>
             <img className={style.elementIcon} src="medias\fire.png" />
           </section>
           <section className={style.weatherImg}>
             <img src="medias\charmander.jpg" alt="" />
           </section>
           <section className={style.weatherMeta}>
-           <p><b>Lizard Pokemon. Length: 2' 0", Weight: 19 lbs.</b></p>
+           <p><b>{data.dt_txt}</b></p>
           </section>
           <section className={style.weatherAbility}>
            <span className={style.abilityCost}>
 				    <img className={style.elementIcon} src="medias\fire.png"/>
            </span>
 			     <span className={style.abilityDescription}>
-				    <span className={style.abilityName}>Scratch</span>
+				    <span className={style.abilityName}>Clouds</span>
 			     </span>
-			     <p className={style.abilityDamage}>10</p>
+			     <p className={style.abilityDamage}>{data.clouds.all}</p>
           </section>
           <section className={style.weatherAbility}>
            <span className={style.abilityCost} style={{transform:"translateY(-10px)"}}>
@@ -228,33 +228,31 @@ function LazyWidget({ data }) {
 				    <img className={style.elementIcon} src="medias\fire.png"/>
 			     </span>
 			     <span className={style.abilityDescription}>
-				    <p style={{fontSize:"11px", transform:"translate(8px,-12px)"}}><span className={style.abilityName}>Ember</span>Discard 1 <img className={style.elementIcon} src="medias\fire.png" /> Energy card attached to Charmander in order to use
-					    this
-					    attack.</p>
+				    <p style={{fontSize:"11px", transform:"translate(8px,-12px)"}}><span className={style.abilityName}>Rain</span>Rain volume last 3 hours. <img className={style.elementIcon} src="medias\fire.png" /> Rain volume in mm as units of measurement.</p>
 			      </span>
-			      <p className={style.abilityDamage}>30</p>
+			      <p className={style.abilityDamage}>{data.rain && data.rain["3h"] ? data.rain["3h"] : 0}</p>
           </section>
           <section className={style.weatherStats}>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-22px)"}}>weakness</p>
-              <img style={{transform:"translateY(-12px)"}} src="medias\fire.png" className={style.elementIcon} />
+              <p style={{transform:"translateY(-12px)"}}>humidity</p>
+              <img style={{transform:"translateY(-2px)"}} src="medias\fire.png" className={style.elementIcon} />
             </span>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-22px)"}}>resistance</p>
+              <p style={{transform:"translateY(-12px)"}}>pressure</p>
             </span>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-22px)"}}>retreat cost</p>
-              <img style={{transform:"translateY(-12px)"}} src="medias\fire.png" className={style.elementIcon} />
+              <p style={{transform:"translateY(-12px)"}}>wind speed</p>
+              <img style={{transform:"translateY(-2px)"}} src="medias\fire.png" className={style.elementIcon} />
             </span>
           </section>
           <section className={style.weatherDescription}>
-          <p>Obviously prefers hot places. If it gets caught in the rain, steam is said to sput from the tip of its tail.
-				   LV.10 #4
+          <p>Minimum temperature at the moment of calculation {data.main.temp_min}°C. Max temperature at moment of calculation {data.main.temp_max}°C.
+				   Feels like {data.main.feels_like}°C.
           </p>
           </section>
           <section className={style.cardDetails}>
-            <p className={style.artist}>Lilus. Mitsuhire Arita</p>
-            <p className={style.company}>&copy;1995, 96, 96 Nintendo, Creatures, GAMEFREAK. &copy;1999 Wizards.</p>
+            <p className={style.artist}>Drew Ellington</p>
+            <p className={style.company}>&copy;2024, 96, 96 Nintendo, Creatures, GAMEFREAK. &copy;1999 Wizards.</p>
             <p className={style.collectorCardNumber}>46/120</p>
           </section>
          </div>

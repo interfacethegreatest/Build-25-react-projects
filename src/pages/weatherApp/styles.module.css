@@ -281,6 +281,7 @@
     font-size: 10px;
     text-align: right;
     color: red;
+    white-space: nowrap;
 }
 
 .elementIcon {
@@ -308,6 +309,7 @@
     -ms-flex-align: center;
     align-items: center;
     border-radius: 1px;
+    font-weight: bold;
 }
 
 .weatherMeta p {
@@ -331,7 +333,7 @@
     justify-items: center;
     margin: 0 5px;
     border-bottom: 1px solid black;
-    transform: translateY(-15px);
+    transform: translateY(-5px);
 }
   
 .weatherAbility .abilityCost img {
@@ -389,7 +391,7 @@
 }
 
 .weatherDescription {
-    height: 26px;
+    height: 27px;
     margin: 0 10px;
     border: 2px solid yellow;
     display: -ms-grid;
@@ -397,7 +399,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    transform: translateY(-8px);
+    transform: translateY(2px);
 }
 
 .weatherDescription p {
