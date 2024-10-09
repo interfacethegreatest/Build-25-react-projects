@@ -13,6 +13,7 @@ import Scene from './Scene';
 import GlobeScene from './globeScene';
 import { Heebo, Yellowtail } from "next/font/google";
 import data from '../accordion/data';
+import { hue } from 'three/webgpu';
 
 const font = Heebo({
   subsets: ["latin"],
@@ -142,6 +143,67 @@ export default function Index() {
 }
 
 function LazyWidget({ data }) {
+  var backgroundHue;
+  if (data.main.temp <= 8 ){
+    backgroundHue = "/medias/background.jpg";
+  }
+  if ( data.main.temp > 8 && data.main.temp <= 12) {
+    backgroundHue = "/medias/backgroundMild.jpg"
+  }
+  if(data.main.temp > 12) {
+    backgroundHue = "/medias/backgroundHot.jpg"
+  }
+  var heatIcon = data.weather[0].main.toLowerCase();
+  var heatImg;
+  switch(heatIcon) {
+    case "clear":
+      heatImg = "/medias/clear.png"
+      break;
+    case "clouds":
+      heatImg = "/medias/clear.png"
+      break;
+    case "rain":
+      heatImg = "/medias/rain.png"
+      break;
+    case "drizzle":
+      heatImg = "/medias/rain.png"
+      break;
+    case "thunderstorm":
+      heatImg = "/medias/thunder.png"
+      break;
+    case "snow":
+      heatImg = "/medias/ice.png"
+      break;
+    case "mist":
+     heatImg = "/medias/mist.png"
+     break;
+    case "smoke":
+      heatImg = "/medias/mist.png"
+      break;
+    case "haze":
+      heatImg = "/medias/mist.png"
+      break;
+    case "dust":
+      heatImg = "/medias/sand.png"
+      break;
+    case "fog":
+      heatImg = "/medias/mist.png"
+      break;
+    case "sand":
+      heatImg = "/medias/sand.png"
+      break;
+    case "ash":
+      heatImg = "/medias/sand.png"
+      break;
+    case "squall":
+      heatImg = "/medias/rain.png"
+      break;
+    case "tornado":
+      heatImg = "/medias/tornado.png"
+      break;
+  }
+
+
   console.log(data)
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -198,12 +260,12 @@ function LazyWidget({ data }) {
         style={{ height: `${height*0.96}px`, width: `${width*0.9}px` }}
         ><h1>Hello Wrld</h1></div></motion.div>
         */}
-         <div id={style.card}>
+         <div id={style.card} style={{backgroundImage:`url("${backgroundHue}")`}}>
           <section className={style.titleRow}>
             <p className={style.rarity}><b>{data.weather[0].description[0].toUpperCase()+ data.weather[0].description.slice(1)}</b></p>
             <h1 className={style.name}><b>{data.weather[0].main}</b></h1>
             <p className={style.health}>{data.main.temp+" °C "}</p>
-            <img className={style.elementIcon} src="medias\fire.png" />
+            <img className={style.elementIcon} src={heatImg} />
           </section>
           <section className={style.weatherImg}>
             <img src="medias\charmander.jpg" alt="" />
@@ -213,7 +275,7 @@ function LazyWidget({ data }) {
           </section>
           <section className={style.weatherAbility}>
            <span className={style.abilityCost}>
-				    <img className={style.elementIcon} src="medias\fire.png"/>
+				    <img className={style.elementIcon} src="medias\clouds.png"/>
            </span>
 			     <span className={style.abilityDescription}>
 				    <span className={style.abilityName}>Clouds</span>
@@ -222,27 +284,28 @@ function LazyWidget({ data }) {
           </section>
           <section className={style.weatherAbility}>
            <span className={style.abilityCost} style={{transform:"translateY(-10px)"}}>
-				    <img className={style.elementIcon} src="medias\fire.png"/>
-				    <img className={style.elementIcon} src="medias\fire.png"/>
-				    <img className={style.elementIcon} src="medias\fire.png"/>
-				    <img className={style.elementIcon} src="medias\fire.png"/>
+				    <img className={style.elementIcon} src="medias\rain.png"/>
+				    <img className={style.elementIcon} src="medias\rain.png"/>
+				    <img className={style.elementIcon} src="medias\rain.png"/>
+				    <img className={style.elementIcon} src="medias\rain.png"/>
 			     </span>
 			     <span className={style.abilityDescription}>
-				    <p style={{fontSize:"11px", transform:"translate(8px,-12px)"}}><span className={style.abilityName}>Rain</span>Rain volume last 3 hours. <img className={style.elementIcon} src="medias\fire.png" /> Rain volume in mm as units of measurement.</p>
+				    <p style={{fontSize:"11px", transform:"translate(8px,-12px)"}}><span className={style.abilityName}>Rain</span>Rain volume last 3 hours. <img className={style.elementIcon} src="medias\rain.png" /> Rain volume in mm as units of measurement.</p>
 			      </span>
 			      <p className={style.abilityDamage}>{data.rain && data.rain["3h"] ? data.rain["3h"] : 0}</p>
           </section>
           <section className={style.weatherStats}>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-12px)"}}>humidity</p>
+              <p style={{transform:"translateY(-12px)"}}>humidity {data.main.humidity}</p>
               <img style={{transform:"translateY(-2px)"}} src="medias\fire.png" className={style.elementIcon} />
             </span>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-12px)"}}>pressure</p>
+              <p style={{transform:"translateY(-12px)"}}>pressure - {data.main.pressure}</p>
+              <img style={{transform:"translateY(-2px)"}} src="medias\pressure.png" className={style.elementIcon} />
             </span>
             <span className={style.characterStat}>
-              <p style={{transform:"translateY(-12px)"}}>wind speed</p>
-              <img style={{transform:"translateY(-2px)"}} src="medias\fire.png" className={style.elementIcon} />
+              <p style={{transform:"translateY(-12px)"}}>wind - {data.wind.speed} m/h</p>
+              <img style={{transform:"translateY(-2px)"}} src="medias\thunder.png" className={style.elementIcon} />
             </span>
           </section>
           <section className={style.weatherDescription}>
